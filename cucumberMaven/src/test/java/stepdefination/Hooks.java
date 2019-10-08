@@ -1,18 +1,21 @@
 package stepdefination;
 
-import java.sql.Driver;
-
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class Hooks extends BaseClass{
+public class Hooks extends BaseClass {
 
-	
 	@Before
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\P7112037\\Desktop\\chromedriver.exe");
+		String os = System.getProperty("os.name");
+		System.out.println(os);
+		if (os.contains("Mac")) {
+			System.setProperty("webdriver.chrome.driver",
+					"/Users/rock/git/javaPrograms/cucumberMaven/driver/chromedriver");
+
+		}
 	}
-	
+
 	@After
 	public void closeAll() {
 		driver.close();
