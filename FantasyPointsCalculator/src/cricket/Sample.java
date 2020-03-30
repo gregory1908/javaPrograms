@@ -39,14 +39,13 @@ public class Sample {
 		System.out.println("Enter direct runout: ");
 		System.out.println("Enter WICKETS: ");
 		System.out.println("Enter maiden overs: ");
-		System.out.println("Enter three wickets: ");
-		System.out.println("Enter five wickets: ");
-		System.out.println("Enter seven wickets: ");
+//		System.out.println("Enter three wickets: ");
+//		System.out.println("Enter five wickets: ");
+//		System.out.println("Enter seven wickets: ");
 		System.out.println("Enter ECONOMY: ");
 
 		calculatePoints(input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(),
-				input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(),
-				input.nextInt(), input.nextInt(), input.nextFloat());
+				input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(), input.nextInt(), input.nextFloat());
 
 		// calculatePoints(8, 9, 1, 10);
 		// System.out.println(calcEco((float) 4.5));
@@ -54,12 +53,29 @@ public class Sample {
 	}
 
 	public static void calculatePoints(int runs, int balls, int fours, int six, int catc, int stump, int runout,
-			int dirrun, int wicket, int maiden, int wic3, int wic5, int wic7, float econ) {
+			int dirrun, int wicket, int maiden, float econ) {
 
 		points = (float) ((runs * 0.5) + (fours * 0.5) + (six) + getfifty(runs) + getHun(runs) + getDoubHun(runs)
 				+ strPoint(runs, balls) + (catc * 4) + (stump * 6) + (runout * 3) + (dirrun * 6) + (wicket * 12)
-				+ (maiden * 2) + (wic3 * 3) + (wic5 * 6) + (wic7 * 9) + calcEco(econ));
+				+ (maiden * 2) + wichaulPts(wicket) + calcEco(econ));
 		System.out.println(points);
+
+	}
+
+	public static int wichaulPts(int wicket) {
+		int whp = 0;
+
+		if (wicket < 3) {
+			whp = 0;
+		} else if (wicket == 3 || wicket == 4) {
+			whp = 3;
+		} else if (wicket == 5 || wicket == 6) {
+			whp = 6;
+		} else if (wicket >= 7) {
+			whp = 9;
+		}
+		//System.out.println(whp);
+		return whp;
 
 	}
 
